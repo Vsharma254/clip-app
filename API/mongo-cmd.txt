@@ -1,0 +1,10 @@
+for mongo export - 
+mongodump -h ds155509.mlab.com:55509 -d empdb -u FirstUser -p viveksharma -o C:\db
+For import collection -  from bindary files
+mongorestore -h ds111913.mlab.com:11913 -d cli-app -u vivek -p Singh@123 C:\db\empdb\SystemUser.bson
+For import Db
+mongorestore -h ds111913.mlab.com:11913 -d cli-app -u vivek -p Singh@123 C:\db\empdb
+
+
+
+
