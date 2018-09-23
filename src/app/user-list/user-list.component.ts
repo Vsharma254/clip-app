@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../service/service";
+import { Store } from '@ngrx/store';
+import * as userModel from '../store/user/user.model';
+import { Subscription } from 'rxjs';
+import * as userSelector from '../store/user/user.selector';
+import * as userAction from '../store/user/user.action';
 
 @Component({
   selector: 'app-user-list',
@@ -7,13 +12,21 @@ import { HttpService } from "../service/service";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
-  userList:any;
-  constructor(private ser:HttpService) { }
+  getuserList:Subscription;
+  userList:userModel.User[] = [];
+  constructor(private ser:HttpService, private store:Store<userModel.UserState>) { }
 
   ngOnInit() {
-     this.ser.getUserAllData().subscribe(d=> {
-      this.userList =  d;
-  });;
+    this.store.dispatch(new userAction.GetUserListAction(""));  // empty string for now
+    this.subscriptionInit();
+  }
+  subscriptionInit(){
+    this.getuserList = this.store.select(userSelector.getUserList).subscribe(
+      (users:userModel.User[])=>{
+        if(users){
+        this.userList =  users;
+        }
+      }
+    )
   }
 }
