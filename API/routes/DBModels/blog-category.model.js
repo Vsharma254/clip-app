@@ -13,7 +13,7 @@ module.exports = function(mongoose) {
     { collection: "Category" }
   );
 
-  var Model = mongoose.model("Category", DepartmentSchema);
+  var Model = mongoose.model("Category", schema);
 
   exportItems.getAll = function getAll(argFilter, callback) {
     var list = [];
@@ -27,24 +27,35 @@ module.exports = function(mongoose) {
   exportItems.save = function save(collection, callback) {
     exportItems.getAll({}, function(_list) {
       var list = [];
-      _list.forEach(function(d) {
-        list.push(d);
-      });
-      var maxID = Math.max.apply(
-        Math,
-        list.map(function(o) {
-          return o.categoryId;
-        })
-      );
-      collection.categoryId = maxID + 1;
+      if (_list) {
+        _list.forEach(function(d) {
+          list.push(d);
+        });
+      }
+      var maxID = 0;
+      if (list.length > 0) {
+        var maxID = Math.max.apply(
+          Math,
+          list.map(function(o) {
+            return o.categoryId;
+          })
+        );
+      }
+      collection.categoryId = (maxID ? maxID : 0) + 1;
       var model = new Model({
-        categoryName: collection.deptName,
-        categoryId: collection.deptID
+        categoryName: collection.categoryName,
+        categoryId: collection.categoryId
       });
       model.save(function(error) {
         if (error == null) console.log("added successfully");
         else console.log(error);
-        callback(error, collection);
+        list = [];
+        Model.find({}, function(eror, data) {
+          data.forEach(function(d) {
+            list.push(d);
+          });          
+          callback(error, list);
+        });
       });
     });
   };

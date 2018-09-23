@@ -2,7 +2,7 @@ var route = function(app, mongoose) {
   var db = require("./DBModels/blog-category.model")(mongoose);
   app.get("/api/categories", function(req, res) {
     var argumentFilter = {};
-    db.getDepartments(argumentFilter, function(collections) {
+    db.getAll(argumentFilter, function(collections) {
       res.send(collections);
     });
   });
