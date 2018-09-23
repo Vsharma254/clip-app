@@ -4,11 +4,12 @@ import { MasterComponent } from "./master.component";
 import { CategoryComponent } from "./category/category.component";
 const routes: Routes = [
   {
-    path: "master",
+    path: "",
     component: MasterComponent
-  },
+  }
+  ,
   {
-    path: "master",
+    path: "",
     children: [
       {
         path: "category",

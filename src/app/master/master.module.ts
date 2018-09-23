@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
+import { MasterRoutingModule } from "./master.routing.module";
+import { MasterComponent } from "./master.component";
+import { CategoryComponent } from "./category/category.component";
 import {
   MasterService,
   MasterEffect,
@@ -10,10 +14,12 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature("user", masterReducer),
-    EffectsModule.forFeature([MasterEffect])  
+    FormsModule,
+    MasterRoutingModule,
+    StoreModule.forFeature("master", masterReducer),
+    EffectsModule.forFeature([MasterEffect])
   ],
-  declarations: [],
-  providers:[MasterService]
+  declarations: [MasterComponent, CategoryComponent],
+  providers: [MasterService]
 })
-export class MasterModule { }
+export class MasterModule {}

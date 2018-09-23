@@ -27,28 +27,28 @@ export class GetCategoryListActionFail implements Action {
 }
 
 export class SaveCategoryListAction implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST;
+  public readonly type = actionType.SAVE_CATEGORY_LIST;
   constructor(public payload: model.Category) {}
 }
 export class SaveCategoryListActionSuccess implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST_SUCCESS;
+  public readonly type = actionType.SAVE_CATEGORY_LIST_SUCCESS;
   constructor(public payload: model.Category[]) {}
 }
 export class SaveCategoryListActionFail implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST_FAIL;
+  public readonly type = actionType.SAVE_CATEGORY_LIST_FAIL;
   constructor(public payload: any) {}
 }
 
 export class DeteleCategoryListAction implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST;
+  public readonly type = actionType.DELETE_CATEGORY_LIST;
   constructor(public payload: model.Category) {}
 }
 export class DeteleCategoryListActionSuccess implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST_SUCCESS;
+  public readonly type = actionType.DELETE_CATEGORY_LIST_SUCCESS;
   constructor(public payload: model.Category[]) {}
 }
 export class DeteleCategoryListActionFail implements Action {
-  public readonly type = actionType.GET_CATEGORY_LIST_FAIL;
+  public readonly type = actionType.DELETE_CATEGORY_LIST_FAIL;
   constructor(public payload: any) {}
 }
 export type Actions = 

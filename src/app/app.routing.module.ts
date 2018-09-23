@@ -8,6 +8,10 @@ const routes: Routes = [
     path: "contact",
     loadChildren: "./contact/contact.module#ContactModule"
   },
+  {
+    path: "master",
+    loadChildren: "./master/master.module#MasterModule"
+  },
   { path: "user-list", component: UserListComponent }
 ];
 

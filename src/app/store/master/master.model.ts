@@ -4,7 +4,8 @@ export interface Category{
     create?: Date,
     update?: Date,
     createdBy: Number,
-    updatedBy?: Number
+    updatedBy?: Number,
+    CreatedByName?:string
 }
 export interface MasterState {
     categories:Category[]
