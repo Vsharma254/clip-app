@@ -4,6 +4,7 @@ var setUserRoute = require('./userRoutes.js');
 var setDeptRoute = require('./deptRoutes');
 var setRouteForEmployee = require('./employeeRoutes');
 var setmessageRoute = require('./chatmessageroute');
+var setblogcategory = require('./blog-category');
 
 var appRouter = function(app, mongoose) {
     app.all('*', function(req, res, next) {
@@ -19,6 +20,7 @@ var appRouter = function(app, mongoose) {
     setDeptRoute(app, mongoose);
     setRouteForEmployee(app, mongoose);
     setmessageRoute(app, mongoose);
+    setblogcategory(app, mongoose);
 
 }
 

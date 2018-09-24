@@ -7,7 +7,7 @@ import {UserList} from './stub';
 export class MockRequest {
     constructor() { }
     public mock(url: string, method: string, request: HttpRequest<any>): Observable<HttpEvent<any>> {
-        if (url.match('api/user/list') && method === 'GET') {
+        if (url.match('api/users') && method === 'GET') {
             const requestContent = request.body;
             const responseContent = UserList;
             return new Observable(resp => {

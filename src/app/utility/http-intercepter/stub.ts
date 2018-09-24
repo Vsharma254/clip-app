@@ -1,20 +1,22 @@
 export const UserList = [
-    {
-        "id": 1,
-        "first_name": "Sebastian",
-        "last_name": "Eschweiler",
-        "email": "sebastian@codingthesmartway.com"
-      },
-      {
-        "id": 2,
-        "first_name": "Steve",
-        "last_name": "Palmer",
-        "email": "steve@codingthesmartway.com"
-      },
-      {
-        "id": 3,
-        "first_name": "Ann",
-        "last_name": "Smith",
-        "email": "ann@codingthesmartway.com"
-      }
-    ]
+  {
+    _id: "5b9cb46dfb6fc00e4d763b5c",
+    name: "Admin user",
+    userName: "admin",
+    password: "123",
+    email: "vsharma254@gmail.com",
+    type: 1,
+    id: 1,
+    userID: 1
+  },
+  {
+    _id: "5b9cc80de2a43d1d701f4d66",
+    name: "vivek sharma",
+    userName: "vivek",
+    email: "vsharma123@gmail.com",
+    password: "123",
+    type: 0,
+    id: 2,
+    __v: 0
+  }
+];
