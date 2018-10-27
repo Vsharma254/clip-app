@@ -2,28 +2,42 @@ var jsonfile = require('jsonfile')
 var filenames = require('../data/filename');
 var os = require("os");
 
-var setUserRoute = function(app, mongoose) {
+var setUserRoute = function (app, mongoose) {
     var systemUserDB = require("./DBModels/userdbmodel")(mongoose);
     var _file = filenames.UserFile;
-    app.post("/api/authuser", function(req, res) {
-        systemUserDB.getSystemUser({ userName: req.body.userName, password: req.body.password }, (userList) => {
-            if (userList) {
-                if (userList.length > 0)
-                    res.send(userList[0]);
-                else
+    app.post("/api/authuser", async function (req, res) {
+        await  authuserAsync(req).then(
+            (userList) => {
+                if (userList) {
+                    if (userList.length > 0)
+                        res.send(userList[0]);
+                    else
+                        res.send({});
+                } else
                     res.send({});
-            } else
-                res.send({});
-        });
-    });
+            }
+        )
 
-    app.get("/api/users", function(req, res) {
-        systemUserDB.getSystemUser(null, (users) => {
+    });
+    async function authuserAsync(req) {        
+        return new Promise(resolve => systemUserDB.getSystemUser(
+            { userName: req.body.userName, password: req.body.password }, resolve)
+        );
+    }
+    async function allUsersAsync(req) {        
+        return new Promise(resolve => systemUserDB.getSystemUser(
+            null, resolve)
+        );
+
+    }
+
+    app.get("/api/users", async function (req, res) {
+        await allUsersAsync(null).then((users) => {
             return res.send(users);
         });
     });
 
-    app.post("/api/adduser", function(req, res) {
+    app.post("/api/adduser", function (req, res) {
         systemUserDB.saveUser(req.body, (error, newUser) => {
             if (error) {
                 console.log(error);
@@ -41,7 +55,7 @@ var setUserRoute = function(app, mongoose) {
         // });
         // return res.send(req.body);
     });
-    app.get("/api/utilites", function(req, res) {
+    app.get("/api/utilites", function (req, res) {
         var dir = os.hostname();
         var merrory = os.freemem();
         return res.send(merrory.toString());

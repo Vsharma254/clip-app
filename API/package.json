@@ -15,5 +15,8 @@
     "jsonfile": "^2.4.0",
     "mongoose": "^4.9.6",
     "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   }
 }

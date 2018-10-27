@@ -7,6 +7,7 @@ export interface Category{
     updatedBy?: Number,
     CreatedByName?:string
 }
-export interface MasterState {
-    categories:Category[]
+export interface MasterState  {
+    categories: Category[]
 }
+
