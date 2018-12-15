@@ -14,7 +14,7 @@ import { reducers as reducer, metaReducers } from "./store/root/root.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { UserService, UserEffect, reducer as userReducer } from "./store/user";
 
-@NgModule({
+@NgModule({ 
   declarations: [AppComponent, AddUserComponent, UserListComponent],
   imports: [
     BrowserModule,

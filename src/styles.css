@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.listofDiv{
+    border:3px solid blue;
+    position:absolute;
+    display: none;
+    z-index: 3;
+}
+.overlay {    
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
