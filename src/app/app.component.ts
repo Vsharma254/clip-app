@@ -46,4 +46,5 @@ export class AppComponent {
     let cont = $('#content-wrapper');
     cont.removeClass('overlay');
   }
+  // test for build
 }
